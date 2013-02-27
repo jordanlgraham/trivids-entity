@@ -1,0 +1,10 @@
+; $Id$
+name = TriVids
+description = My experimental module intended to create an entity around TriVids athletes table
+package = Fun modules for a Tuesday night
+core = 7.x
+configure = admin/config/trivids
+files[] = trivids.module
+files[] = trivids.controller.inc
+dependencies[] = block
+dependencies[] = entity

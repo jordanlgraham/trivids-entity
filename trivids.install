@@ -1,0 +1,101 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Install, update and uninstall functions for the trails module
+ *
+ * In this version we demonstrate the use of hook_update_N() to add
+ * a new database table.
+ *
+ * For more information on hook_update_N(), see:
+ * http://drupal.org/node/150215 and
+ * http://api.drupal.org/api/drupal/modules--system--system.api.php/function/hook_update_N/7
+ */
+
+/**
+ * Implements hook_install().
+ */
+function trivids_install() {
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function trivids_uninstall() {
+}
+
+/**
+ * Implements hook_schema().
+ */
+function trivids_schema() {
+	$schema = array(); 
+
+	$schema['trivids_athletes'] = array(
+	  'description' => 'This table contains information about athletes',
+	  'fields' => array(
+		'idno' => array(
+		  'description' => 'Unique identifying number for an athlete',
+		  'type' => 'serial',
+		  'not null' => TRUE,
+		),
+		'firstname' => array(
+		  'description' => "Athlete's first name",
+		  'type' => 'varchar',
+		  'length' => '25',
+		  'not null' => TRUE,
+		),
+		'lastname' => array(
+		  'description' => "Athlete's last name",
+		  'type' => 'varchar',
+		  'length' => '25',
+		  'not null' => TRUE,
+		),
+		'address' => array(
+		  'description' => "Athlete's address",
+		  'type' => 'varchar',
+		  'length' => '60',
+		  'not null' => FALSE,
+		),
+		'city' => array(
+		  'description' => 'City',
+		  'type' => 'varchar',
+		  'length' => '25',
+		  'not null' => FALSE,
+		),
+		'state' => array(
+		  'description' => 'State',
+		  'type' => 'varchar',
+		  'length' => '2',
+		  'not null' => FALSE,
+		),
+		'zip' => array(
+		  'description' => 'Zip code',
+		  'type' => 'varchar',
+		  'length' => '10',
+		  'not null' => FALSE,
+		),
+		'age' => array(
+		  'description' => "Athlete's age",
+		  'type' => 'int',
+		  'size' => 'tiny',
+		  'not null' => TRUE,
+		),
+		'sex' => array(
+		  'description' => 'Gender',
+		  'type' => 'varchar',
+		  'length' => '6',
+		  'not null' => TRUE,
+		),
+		'email' => array(
+		  'description' => 'email address',
+		  'type' => 'varchar',
+		  'length' => '70',
+		  'not null' => TRUE,
+		),
+	  ),
+	  'primary key' => array('idno'),
+	);
+
+  return $schema;
+}
